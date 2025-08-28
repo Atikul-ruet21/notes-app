@@ -1,18 +1,15 @@
-import authRoutes from "./routes/authRoutes.js";
-import noteRoutes from "./routes/noteRoutes.js";
-import shareRoutes from "./routes/shareRoutes.js";
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-
-import authRoutes from "./routes/authRoutes.js";
 import noteRoutes from "./routes/noteRoutes.js";
 import shareRoutes from "./routes/shareRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
 
 // Load environment variables
 dotenv.config();
 
+// Constants
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -28,27 +25,14 @@ app.use(express.json());
 const connectDB = async () => {
   try {
     if (!process.env.MONGO_URI) {
-      console.error("❌// f:\notes-app\server\server.js
-      
-      import authRoutes from "./routes/authRoutes.js";
-      import noteRoutes from "./routes/noteRoutes.js";
-      import shareRoutes from "./routes/shareRoutes.js";
-      
-      // ...
-      
-      app.use("/api/auth", authRoutes);
-      app.use("/api/notes", noteRoutes);
-      app.use("/api/shared", shareRoutes);
-      FATAL ERROR: MONGO_URI is not defined in .env file.");
+      console.error("❌ FATAL ERROR: MONGO_URI is not defined in .env file.");
       process.exit(1);
-    }// ... (all route definitions like router.get(...), router.post(...), etc.)
-    
-    export default router;
+    }
     await mongoose.connect(process.env.MONGO_URI);
     console.log("✅ MongoDB Connected");
   } catch (error) {
     console.error("❌ Database connection error:", error.message);
-    process.exit(1); // Exit process with failure
+    process.exit(1);
   }
 };
 
@@ -63,10 +47,9 @@ app.get("/health", (req, res) => {
   });
 });
 
-app.use("/api/auth", authRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/shared", shareRoutes);
-
+app.use("/api/auth", authRoutes);
 // Error handling
 app.use((err, req, res, next) => {
   console.error(err.stack);
