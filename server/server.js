@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import path from "path";
 import jwt from "jsonwebtoken";
 import { body, validationResult } from "express-validator";
 
