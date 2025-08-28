@@ -1,3 +1,4 @@
+export default router;
 import express from "express";
 import { body } from "express-validator";
 import { register, login, getMe } from "../controllers/authController.js";

@@ -1,3 +1,4 @@
+export default router;
 import express from "express";
 import { body } from "express-validator";
 import authenticateToken from "../middleware/authMiddleware.js";
