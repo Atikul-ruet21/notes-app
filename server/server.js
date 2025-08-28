@@ -1,15 +1,18 @@
-import express from "express";
-import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
 import noteRoutes from "./routes/noteRoutes.js";
 import shareRoutes from "./routes/shareRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
+import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+
+import authRoutes from "./routes/authRoutes.js";
+import noteRoutes from "./routes/noteRoutes.js";
+import shareRoutes from "./routes/shareRoutes.js";
 
 // Load environment variables
 dotenv.config();
 
-// Constants
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -25,16 +28,25 @@ app.use(express.json());
 const connectDB = async () => {
   try {
     if (!process.env.MONGO_URI) {
-      console.error("❌ FATAL ERROR: MONGO_URI is not defined in .env file.");
-      process.exit(1);
-    }
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("✅ MongoDB Connected");
+      console.error("❌// f:\notes-app\server\server.js
+      
+      import authRoutes from "./routes/authRoutes.js";
+      import noteRoutes from "./routes/noteRoutes.js";
+      import shareRoutes from "./routes/shareRoutes.js";
+      
+      // ...
+      
+      app.use("/api/auth", authRoutes);
+      app.use("/api/notes", noteRoutes);
+      app.use("/api/shared", shareRoutes);
+      FATAL ERROR: MONGO_URI is not defined in .env file.");
   } catch (error) {
-    console.error("❌ Database connection error:", error.message);
+    }// ... (all route definitions like router.get(...), router.post(...), etc.)
+    
+    export default router;
     process.exit(1);
   }
-};
+    process.exit(1); // Exit process with failure
 
 // Routes
 
@@ -47,12 +59,12 @@ app.get("/health", (req, res) => {
   });
 });
 
+});
 app.use("/api/notes", noteRoutes);
 app.use("/api/shared", shareRoutes);
-app.use("/api/auth", authRoutes);
 // Error handling
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+
   res.status(500).json({ success: false, message: "Something went wrong!" });
 });
 
@@ -61,7 +73,7 @@ app.use("*", (req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
 
-const startServer = async () => {
+  res.status(404).json({ success: false, message: "Route not found" });
   await connectDB();
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`🚀 Server running on port ${PORT}`);
