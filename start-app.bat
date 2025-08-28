@@ -18,7 +18,7 @@ echo.
 echo ========================================
 echo Both servers are starting up!
 echo.
-echo Backend:  http://localhost:5000
+echo Backend:  https://notes-app-server-mcpb.onrender.com
 echo Frontend: http://localhost:3000
 echo.
 echo Your browser should open automatically.
