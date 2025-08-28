@@ -31,6 +31,7 @@ This is a full-stack notes application with React frontend and Node.js/Express b
    - MONGO_URI: Your MongoDB connection string
    - JWT_SECRET: Your JWT secret key
    - PORT: Server port (default: 5000)
+   - CORS_ORIGIN: Your frontend URL (e.g. http://localhost:3000 for local, https://notes-app-frontend-65ev.onrender.com for production)
 
 4. Start the server:
    ```bash
