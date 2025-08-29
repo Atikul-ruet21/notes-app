@@ -1,4 +1,4 @@
-import Note from "../models/Note.js";
+import NoteModel from "../models/Note.js";
 import { validationResult } from "express-validator";
 
 export const getNotes = async (req, res) => {
@@ -15,7 +15,7 @@ export const getNotes = async (req, res) => {
       const tagArray = tags.split(",");
       query.tags = { $in: tagArray };
     }
-    let notes = await Note.find(query).sort({ isPinned: -1, updatedAt: -1 });
+    let notes = await NoteModel.find(query).sort({ isPinned: -1, updatedAt: -1 });
     if (search) {
       const searchRegex = new RegExp(search, "i");
       notes = notes.filter(
@@ -54,7 +54,7 @@ export const createNote = async (req, res) => {
       subtasks,
     } = req.body;
 
-    const note = new Note({
+    const note = new NoteModel({
       title,
       content,
       color,
@@ -83,7 +83,7 @@ export const updateNote = async (req, res) => {
   try {
     const { id } = req.params;
     const updates = { ...req.body, updatedAt: new Date() };
-    const note = await Note.findOneAndUpdate(
+    const note = await NoteModel.findOneAndUpdate(
       { _id: id, userId: req.user.userId },
       updates,
       { new: true }
@@ -107,7 +107,7 @@ export const updateNote = async (req, res) => {
 export const deleteNote = async (req, res) => {
   try {
     const { id } = req.params;
-    const note = await Note.findOneAndDelete({
+    const note = await NoteModel.findOneAndDelete({
       _id: id,
       userId: req.user.userId,
     });
