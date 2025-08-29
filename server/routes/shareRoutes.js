@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { body, validationResult } from "express-validator";
 import { randomBytes } from "crypto";
-import { Note } from "../models/Note.js";
+import Note from "../models/Note.js";
 import { authenticateToken } from "../middleware/auth.js";
 
 const router = Router();
