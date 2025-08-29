@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+  origin: [
+    process.env.CORS_ORIGIN || "http://localhost:3000",
+    "https://notes-app-frontend-65ev.onrender.com",
+  ],
   credentials: true,
 };
 app.use(cors(corsOptions));
