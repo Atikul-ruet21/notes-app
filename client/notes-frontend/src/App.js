@@ -440,6 +440,7 @@ function App() {
                 <label>Password</label>
                 <input
                   type="password"
+                  autoComplete="current-password"
                   value={authForm.password}
                   onChange={(e) =>
                     setAuthForm({ ...authForm, password: e.target.value })
